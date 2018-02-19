@@ -63,7 +63,7 @@ var Colors = sequelize.define('colors', table);
 // svg files
 var svgfiles = [
     {
-        svg: 'Octocat'
+        svg: 'ctf_moxie_bw_pg2'
                 },
     {
         svg: 'Foxes'
