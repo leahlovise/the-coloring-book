@@ -29,6 +29,10 @@ $(function () {
 });
 
 function paint(target) {
+    // Prevent coloring over black shapes.
+    if ( $(target).css('fill') ===  'rgb(0, 0, 0)') {
+        return;
+    }
     if ($('#blend-mode')[0].checked) {
         if ($(target).css('fill') == '')
             $(target).css('fill', _currentFill);
