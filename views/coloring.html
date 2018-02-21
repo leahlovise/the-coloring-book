@@ -1,9 +1,5 @@
 <div class="container-fluid col-sm-12" id="main">
-
-    <br>
-    <br>
-    <div class="col-xs-12 col-sm-offset-2 col-sm-6 svg-container">
-
+    <div class="svg-container">
         <object class="{{svg}}" type="image/svg+xml" data="/images/{{svg}}.svg" onload="getColor('{{paintid}}')" id="{{paintid}}"></object>
     </div>
     <div class="col-xs-12 col-sm-3 sidemenu">
@@ -55,9 +51,15 @@
                 </div>
             </div>
             <div class="row">
-                    <label class="col-xs-12 switch">Blend mode
-                        <input id="blend-mode" type="checkbox">
-                        <div class="slider round"></div>
+                <label>
+                    color
+                    <input type="color" id="color"/>
+                </label>
+            </div>
+            <div class="row">
+                    <label class="col-xs-12">
+                        zoom
+                        <input id="zoom" type="range" value="0"/>
                     </label>
             </div>
             <div class="btn-group col-xs-12 hidden-xs">

@@ -33,31 +33,31 @@ function paint(target) {
     if ( $(target).css('fill') ===  'rgb(0, 0, 0)') {
         return;
     }
-    if ($('#blend-mode')[0].checked) {
-        if ($(target).css('fill') == '')
-            $(target).css('fill', _currentFill);
-        else {
-            var rgb = $(target).css('fill');
-            rgb = rgb.replace('rgb(', '');
-            rgb = rgb.replace(')', '');
-            var color = rgb.split(', ');
-            var rgb2 = _currentFill;
-            rgb2 = rgb2.replace('rgb(', '');
-            rgb2 = rgb2.replace(')', '');
-            var color2 = rgb2.split(', ');
-            for (var i = 0; i < 3; i++) {
-                color[i] = parseInt(parseInt(color[i]) + (parseInt(color2[i]) - parseInt(color[i])) * 0.3);
-            }
-            var rgb3 = 'rgb(' + color.join() + ')';
-            $(target).css('fill', rgb3);
-        }
-    } else {
-        $(target).css('fill', _currentFill);
-    }
+    $(target).css('fill', _currentFill);
 }
 
 function showCancelBox() {
     $('#cancel-msg').removeClass('hidden');
+}
+
+$('#zoom').on('input', (e) => {
+    $(mysvg).css('transform', `scale(${1 + e.target.value / 10})`);
+});
+$('#color').on('change', (e) => {
+    if (e.currentTarget.value === '#000000') {
+        return;
+    }
+    $('.color-sample.selected').removeClass('selected');
+    $(this).addClass('selected');
+    _currentFill = e.currentTarget.value;
+});
+
+function addSample() {
+    let $sample = $('.palette > div:last-child').clone();
+    $sample
+      .find('.color-sample')
+      .css('background', _currentFill);
+    $sample.appendTo($('.palette'));
 }
 
 function submitData(paintid) {
