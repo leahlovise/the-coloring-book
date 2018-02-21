@@ -62,12 +62,19 @@ var Colors = sequelize.define('colors', table);
 
 // svg files
 var svgfiles = [
-                    {svg: 'moxie-sparx-dessers-test'},
-                    {svg: 'Octocat'},
-                    {svg: 'Foxes'},
-                    {svg: 'Bear'},
-                    {svg: 'Owls'}
-                                    ];
+    {
+        svg: 'ctf_moxie_bw_pg2'
+                },
+    {
+        svg: 'Foxes'
+                },
+    {
+        svg: 'Bear'
+                },
+    {
+        svg: 'Owls'
+                }
+                ];
 
 server.register([Blipp, Inert, Vision], () => {});
 
