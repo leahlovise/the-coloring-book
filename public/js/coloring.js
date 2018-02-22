@@ -28,22 +28,34 @@ $(function () {
     });
 });
 
+const undos = [];
 function paint(target) {
     // Prevent coloring over black shapes.
-    if ( $(target).css('fill') ===  'rgb(0, 0, 0)') {
+    const targetFill = $(target).css('fill')
+    if ( targetFill ===  'rgb(0, 0, 0)') {
         return;
     }
+    undos.push({target: target, fill: targetFill});
     $(target).css('fill', _currentFill);
+}
+function unpaint() {
+    if (undos.length) {
+        const undo = undos.pop();
+        $(undo.target).css('fill', undo.fill);
+    }
 }
 
 function showCancelBox() {
     $('#cancel-msg').removeClass('hidden');
 }
-
-$('#zoom').on('input', (e) => {
+$('#undo').on('click', function(e) {
+    e.preventDefault();
+    unpaint();
+})
+$('#zoom').on('input', function (e) {
     $(mysvg).css('transform', `scale(${1 + e.target.value / 10})`);
 });
-$('#color').on('change', (e) => {
+$('#color').on('change', function (e) {
     if (e.currentTarget.value === '#000000') {
         return;
     }
