@@ -63,16 +63,22 @@ var Colors = sequelize.define('colors', table);
 // svg files
 var svgfiles = [
     {
-        svg: 'ctf_moxie_bw_pg2'
+        svg: 'moxiesparx_friends'
                 },
     {
-        svg: 'Foxes'
+        svg: 'moxie_the_courageous_bear'
                 },
     {
-        svg: 'Bear'
+        svg: 'sparx_the_clever_fox'
                 },
     {
-        svg: 'Owls'
+       svg: 'moxiesparx__park'
+                },
+     {
+         svg: 'moxiesparx_run'
+              },
+    {
+        svg: 'coloringbook_doctors'
                 }
                 ];
 
