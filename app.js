@@ -72,14 +72,38 @@ var svgfiles = [
         svg: 'sparx_the_clever_fox'
                 },
     {
-       svg: 'moxiesparx__park'
+        svg: 'moxiesparx__park'
                 },
-     {
-         svg: 'moxiesparx_run'
-              },
+    {
+        svg: 'moxiesparx_run'
+                },
+    {
+        svg: 'sparx_change'
+    },
+        {
+        svg: 'moxie_fundraiser'
+                },
+    {
+        svg: 'sparx_capital'
+                },            
+    {
+        svg: 'moxie_monuments'
+                },
+    {
+        svg: 'sparx_airplane'
+                },
     {
         svg: 'coloringbook_doctors'
-                }
+                },
+    {
+        svg: 'family'  
+                },
+    {
+        svg: 'sparx_science'
+                },
+    {  
+        svg: 'moxiesparx_end_nf'
+    }
                 ];
 
 server.register([Blipp, Inert, Vision], () => {});
