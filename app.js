@@ -63,17 +63,47 @@ var Colors = sequelize.define('colors', table);
 // svg files
 var svgfiles = [
     {
-        svg: 'ctf_moxie_bw_pg2'
+        svg: 'moxiesparx_friends'
                 },
     {
-        svg: 'Foxes'
+        svg: 'moxie_the_courageous_bear'
                 },
     {
-        svg: 'Bear'
+        svg: 'sparx_the_clever_fox'
                 },
     {
-        svg: 'Owls'
-                }
+        svg: 'moxiesparx__park'
+                },
+    {
+        svg: 'moxiesparx_run'
+                },
+    {
+        svg: 'sparx_change'
+    },
+        {
+        svg: 'moxie_fundraiser'
+                },
+    {
+        svg: 'sparx_capital'
+                },            
+    {
+        svg: 'moxie_monuments'
+                },
+    {
+        svg: 'sparx_airplane'
+                },
+    {
+        svg: 'coloringbook_doctors'
+                },
+    {
+        svg: 'family'  
+                },
+    {
+        svg: 'sparx_science'
+                },
+    {  
+        svg: 'moxiesparx_end_nf'
+    }
                 ];
 
 server.register([Blipp, Inert, Vision], () => {});

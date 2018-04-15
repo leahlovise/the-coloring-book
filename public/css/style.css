@@ -402,7 +402,7 @@ html, body {
     flex: 1 1 0%;
 }
 .svg-container object {
-    //transform-origin: 0 0;
+    transform-origin: 0 0;
     height: 100%;
     width: 100%;
 }
