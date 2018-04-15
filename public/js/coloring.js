@@ -33,7 +33,7 @@ function paint(target) {
     // Prevent coloring over black shapes.
     const targetFill = $(target).css('fill')
     if ( targetFill ===  'rgb(0, 0, 0)') {
-        return;
+        targetFill =  'rgb(1, 1, 1)'
     }
     undos.push({target: target, fill: targetFill});
     $(target).css('fill', _currentFill);
