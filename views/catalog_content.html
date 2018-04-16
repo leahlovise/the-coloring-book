@@ -3,7 +3,9 @@
 <br> {{#thumbnails svgs}}
 <div class="col-sm-3 thumbnail-container">
     <a href="/new/{{svg}}">
-        <div class="thumbnail" style="background-image: url('/images/{{svg}}.svg');"></div>
+        <div class="thumbnail">
+            <object type="image/svg+xml" data="/images/{{svg}}.svg"></object>
+        </div>
     </a>
 </div>
 {{/thumbnails}}

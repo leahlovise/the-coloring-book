@@ -24,8 +24,7 @@ body {
 }
 
 .navbar-brand img {
-    max-height: 40px;
-    max-width: 40px;
+    height: 100px;
 }
 
 .load-btn.active a {
@@ -159,15 +158,17 @@ input[type=button]:hover {
 
 .thumbnail {
     background-size: cover;
-    padding-bottom: 100%;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .thumbnail object.paint {
     position: absolute;
+
+}
+.thumbnail object {
+    cursor: pointer;
     pointer-events: none;
-    margin: 8px;
 }
 
 .thumbnail-container:hover .thumbnail {
@@ -417,7 +418,7 @@ html, body {
     position: absolute;
     top: 0;
     z-index: 1;
-    width: 100vw;
+    width: auto;
     right: 0;
 }
 .crayon-mask {
@@ -428,4 +429,20 @@ html, body {
     z-index: 1;
     height: 100%;
     overflow: hidden;
+}
+.blend-mode {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10em;
+    padding-left: 1em;
+    background: rgba(255,255,255,0.6);
+}
+
+.coloring .navbar-brand {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,0.6);
+    height: auto;
 }

@@ -1,11 +1,16 @@
-<div class="container-fluid col-sm-12" id="main">
+<div class="container-fluid col-sm-12 coloring" id="main">
     <div class="svg-container">
         <object class="{{svg}}" type="image/svg+xml" data="/images/{{svg}}.svg" id="{{paintid}}"></object>
         <div class="crayon-mask">
             <object class="svg crayons" type="image/svg+xml" data="/images/crayon-icons.svg" onload="bindCrayons()" id=""></object>
         </div>
-
     </div>
+    <label class="switch blend-mode">
+        Blend mode
+        <input id="blend-mode" type="checkbox">
+        <div class="slider round"></div>
+    </label>
+    <a class="navbar-brand" href="/"><img src="/images/ctf_logo.svg" alt="Children's Tumor Foundation"></a>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
