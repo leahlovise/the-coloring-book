@@ -1,4 +1,5 @@
 var _currentFill;
+var mysvg;
 
 $(function () {
     //    if(document.referrer != ''){
@@ -14,9 +15,16 @@ $(function () {
         _currentFill = $(this).css('background-color');
     });
 
-    mysvg = $('.svg-container object')[0];
+    var $object = $('.svg-container > object');
+    mysvg = $object[0];
     mysvg.addEventListener('load', function () {
         var svg = mysvg.contentDocument.getElementsByTagName('svg')[0];
+
+        var filename = $object.attr('data').match(/[^\/]+$/)[0];
+        if (localStorage[filename]) {
+            $(svg).html(localStorage[filename]);
+        }
+
         svg.addEventListener('mousedown', function (event) {
             //            console.log(event.target);
             if (event.target.tagName != 'svg') {
@@ -37,6 +45,7 @@ function paint(target) {
     }
     undos.push({target: target, fill: targetFill});
     $(target).css('fill', _currentFill);
+    saveSvg();
 }
 function unpaint() {
     if (undos.length) {
@@ -129,3 +138,12 @@ function bindCrayons() {
     });
 
 }
+
+function saveSvg() {
+    var $object = $('.svg-container object:first');
+
+    var filename = $object.attr('data').match(/[^\/]+$/)[0];
+
+    localStorage[filename] = $('svg', $object[0].contentDocument).html();
+}
+

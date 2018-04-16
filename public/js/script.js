@@ -61,3 +61,15 @@ function getColor(paintid) {
         });
     }
 }
+
+//localStorage.clientId = localStorage.clientId || ((new Date()).toISOString() + Math.random());
+
+//$(function() {
+//    $('object').on('load', function() {
+//        var filename = $(this).attr('data').match(/[^\/]+$/)[0];
+//        if (localStorage[filename]) {
+//            $('svg', this.contentDocument).html(localStorage[filename]);
+//        }
+//    });
+//});
+
