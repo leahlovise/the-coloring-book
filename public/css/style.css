@@ -432,7 +432,7 @@ html, body {
 }
 .blend-mode {
     position: absolute;
-    bottom: 0;
+    bottom: 2em;
     left: 0;
     width: 10em;
     padding-left: 1em;
@@ -445,4 +445,13 @@ html, body {
     left: 0;
     background: rgba(255,255,255,0.6);
     height: auto;
+    padding: 0;
+}
+
+.clear-drawing {
+    height: 2em;
+    bottom: 1em;
+    left: 1em;
+    border-radius: 0.5em;
+    position: absolute;
 }

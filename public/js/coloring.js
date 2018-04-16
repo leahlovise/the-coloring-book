@@ -17,10 +17,11 @@ $(function () {
 
     var $object = $('.svg-container > object');
     mysvg = $object[0];
+    var filename;
     mysvg.addEventListener('load', function () {
         var svg = mysvg.contentDocument.getElementsByTagName('svg')[0];
 
-        var filename = $object.attr('data').match(/[^\/]+$/)[0];
+        filename = $object.attr('data').match(/[^\/]+$/)[0];
         if (localStorage[filename]) {
             $(svg).html(localStorage[filename]);
         }
@@ -34,6 +35,13 @@ $(function () {
             }
         });
     });
+
+    $('.clear-drawing').click(function() {
+       if (confirm('Are you sure you want to clear this page and start over?')) {
+           localStorage.removeItem(filename);
+           window.location = window.location;
+       }
+    });
 });
 
 const undos = [];
@@ -45,15 +53,11 @@ function paint(target) {
     }
     undos.push({target: target, fill: targetFill});
     if ($('#blend-mode')[0].checked) {
-        if ($(target).css('fill') == '')
+        var oldFill = $(target).css('fill');
+        if ( ! oldFill)
             $(target).css('fill', _currentFill);
         else {
-            var oldFill = $(target).css('fill');
-            if (oldFill && oldFill[0] === '#') {
-                $(target).css('fill', blend_colors(oldFill, _currentFill, 0.5) )
-            } else {
-                $(target).css('fill', _currentFill);
-            }
+            $(target).css('fill', blend_colors(oldFill, _currentFill, 0.5));
         }
     } else {
         $(target).css('fill', _currentFill);
@@ -162,6 +166,8 @@ function saveSvg() {
 
 
 
+
+
 /*
  blend two colors to create the color that is at the percentage away from the first color
  this is a 5 step process
@@ -183,11 +189,11 @@ function blend_colors(color1, color2, percentage)
     percentage = percentage || 0.5;
 
     // 1: validate input, make sure we have provided a valid hex
-    if (color1.length != 4 && color1.length != 7)
-        throw new error('colors must be provided as hexes');
-
-    if (color2.length != 4 && color2.length != 7)
-        throw new error('colors must be provided as hexes');
+    //if (color1.length != 4 && color1.length != 7)
+    //    throw new error('colors must be provided as hexes');
+    //
+    //if (color2.length != 4 && color2.length != 7)
+    //    throw new error('colors must be provided as hexes');
 
     if (percentage > 1 || percentage < 0)
         throw new error('percentage must be between 0 and 1');
@@ -212,20 +218,25 @@ function blend_colors(color1, color2, percentage)
     //      ie: #060 => #006600 (green)
     if (color1.length == 4)
         color1 = color1[1] + color1[1] + color1[2] + color1[2] + color1[3] + color1[3];
-    else
+    else if(color1.length == 7)
         color1 = color1.substring(1);
     if (color2.length == 4)
         color2 = color2[1] + color2[1] + color2[2] + color2[2] + color2[3] + color2[3];
-    else
+    else if(color2.length == 7)
         color2 = color2.substring(1);
 
-    console.log('valid: c1 => ' + color1 + ', c2 => ' + color2);
-
-    // 3: we have valid input, convert colors to rgb
-    color1 = [parseInt(color1[0] + color1[1], 16), parseInt(color1[2] + color1[3], 16), parseInt(color1[4] + color1[5], 16)];
-    color2 = [parseInt(color2[0] + color2[1], 16), parseInt(color2[2] + color2[3], 16), parseInt(color2[4] + color2[5], 16)];
-
-    console.log('hex -> rgba: c1 => [' + color1.join(', ') + '], c2 => [' + color2.join(', ') + ']');
+    if (color1.match(/^rgb/)) {
+        color1 = color1.match(/[\d,\s]+/)[0].split(',')
+            .map(function(s) {return parseInt(s.trim(), 10);});
+    } else {
+        color1 = [parseInt(color1[0] + color1[1], 16), parseInt(color1[2] + color1[3], 16), parseInt(color1[4] + color1[5], 16)];
+    }
+    if (color2.match(/^rgb/)) {
+        color2 = color2.match(/[\d,\s]+/)[0].split(',')
+          .map(function(s) {return parseInt(s.trim(), 10);});
+    } else {
+        color2 = [parseInt(color2[0] + color2[1], 16), parseInt(color2[2] + color2[3], 16), parseInt(color2[4] + color2[5], 16)];
+    }
 
     // 4: blend
     var color3 = [
@@ -263,3 +274,4 @@ function int_to_hex(num)
         hex = '0' + hex;
     return hex;
 }
+
