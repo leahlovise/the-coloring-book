@@ -31,9 +31,9 @@ $(function () {
 const undos = [];
 function paint(target) {
     // Prevent coloring over black shapes.
-    const targetFill = $(target).css('fill')
+    var targetFill = $(target).css('fill');
     if ( targetFill ===  'rgb(0, 0, 0)') {
-        targetFill =  'rgb(1, 1, 1)'
+        targetFill = 'rgb(1, 1, 1)'
     }
     undos.push({target: target, fill: targetFill});
     $(target).css('fill', _currentFill);
@@ -53,7 +53,7 @@ $('#undo').on('click', function(e) {
     unpaint();
 })
 $('#zoom').on('input', function (e) {
-    $(mysvg).css('transform', `scale(${1 + e.target.value / 10})`);
+    $(mysvg).css('transform', 'scale(' + 1 + e.target.value / 10 + ')');
 });
 $('#color').on('change', function (e) {
     if (e.currentTarget.value === '#000000') {
@@ -65,7 +65,7 @@ $('#color').on('change', function (e) {
 });
 
 function addSample() {
-    let $sample = $('.palette > div:last-child').clone();
+    var $sample = $('.palette > div:last-child').clone();
     $sample
       .find('.color-sample')
       .css('background', _currentFill);
