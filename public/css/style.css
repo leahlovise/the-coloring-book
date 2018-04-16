@@ -397,7 +397,6 @@ html, body {
     height: 100%;
 }
 .svg-container {
-    overflow: auto;
     height: 100%;
     flex: 1 1 0%;
 }
@@ -411,4 +410,22 @@ html, body {
 }
 .container-fluid {
     height: 100%;
+}
+
+.svg-container object.crayons {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100vw;
+    right: 0;
+}
+.crayon-mask {
+    width: 11.4vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    height: 100%;
+    overflow: hidden;
 }

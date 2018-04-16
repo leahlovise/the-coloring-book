@@ -117,3 +117,15 @@ function toggleForm() {
     toShow.addClass('hidden-xs-off').removeClass('hidden-xs');
     toHide.addClass('hidden-xs').removeClass('hidden-xs-off');
 }
+
+function bindCrayons() {
+
+    $crayons = $('svg #crayon-icons > g', $('object.crayons')[0].contentDocument);
+
+    $crayons.on('click', function(e) {
+        $crayons.removeClass('selected');
+        var $crayon = $(e.currentTarget).addClass('selected');
+        _currentFill = $crayon.children('path').attr('fill');
+    });
+
+}

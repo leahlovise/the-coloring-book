@@ -124,6 +124,9 @@
             </feMerge>
         </filter>
         <rect id="path-24" x="0" y="52" width="62" height="67.0232255"></rect>
+        <filter id="dilate">
+            <feMorphology operator="dilate" radius="2"/>
+        </filter>
     </defs>
     <g id="crayon-icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="pink" filter="url(#filter-1)" transform="translate(1379.500000, 66.500000) rotate(-90.000000) translate(-1379.500000, -66.500000) translate(1348.500000, 6.500000)">
