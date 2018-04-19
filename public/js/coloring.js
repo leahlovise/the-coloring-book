@@ -1,4 +1,4 @@
-var _currentFill;
+var _currentFill = localStorage._currentFill || "#5993FF";
 var mysvg;
 
 $(function () {
@@ -7,7 +7,6 @@ $(function () {
     //        $('#dontsave-btn').attr('href', document.referrer);
     //    }
 
-    _currentFill = $('.color-sample.selected').css('background-color');
 
     $('.color-sample').click(function () {
         $('.color-sample.selected').removeClass('selected');
@@ -152,6 +151,7 @@ function bindCrayons() {
         $crayons.removeClass('selected');
         var $crayon = $(e.currentTarget).addClass('selected');
         _currentFill = $crayon.children('path').attr('fill');
+        localStorage._currentFill = _currentFill;
     });
 
 }

@@ -242,8 +242,21 @@ server.route({
     method: 'GET',
     path: '/new/{svg}',
     handler: function (request, reply) {
+        console.log('svgfiles', svgfiles);
         reply.view('coloring', {
-            svg: request.params.svg
+            svg: request.params.svg,
+            prev: svgfiles[svgfiles
+              .map(function (d) {
+                return d.svg;
+              })
+              .indexOf(request.params.svg) - 1 % svgfiles.length]
+              .svg,
+            next: svgfiles[svgfiles
+              .map(function (d) {
+                  return d.svg;
+              })
+              .indexOf(request.params.svg) + 1 % svgfiles.length]
+                .svg
         });
     }
 });
