@@ -242,21 +242,21 @@ server.route({
     method: 'GET',
     path: '/new/{svg}',
     handler: function (request, reply) {
-        console.log('svgfiles', svgfiles);
+        console.log('request.params.svg', svgfiles
+          .map(function (d) {
+              return d.svg;
+          }));
+        var currentIndex = svgfiles
+            .map(function (d) {
+                return d.svg;
+            })
+            .indexOf(request.params.svg);
+        var prevIndex = currentIndex === 0 ? svgfiles.length - 1 : currentIndex - 1;
+        var nextIndex = (currentIndex + 1) % svgfiles.length;
         reply.view('coloring', {
             svg: request.params.svg,
-            prev: svgfiles[svgfiles
-              .map(function (d) {
-                return d.svg;
-              })
-              .indexOf(request.params.svg) - 1 % svgfiles.length]
-              .svg,
-            next: svgfiles[svgfiles
-              .map(function (d) {
-                  return d.svg;
-              })
-              .indexOf(request.params.svg) + 1 % svgfiles.length]
-                .svg
+            prev: svgfiles[prevIndex].svg,
+            next: svgfiles[nextIndex].svg
         });
     }
 });
