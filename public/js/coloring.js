@@ -51,7 +51,7 @@ function paint(target) {
     // Prevent coloring over black shapes.
     var targetFill = $(target).css('fill');
     if ( targetFill ===  'rgb(0, 0, 0)') {
-        targetFill = 'rgb(1, 1, 1)'
+        return;
     }
     undos.push({target: target, fill: targetFill});
     if ($('#blend-mode')[0].checked) {
