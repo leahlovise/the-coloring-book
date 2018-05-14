@@ -41,6 +41,9 @@ $(function () {
            window.location = window.location;
        }
     });
+
+    $('.save').click(generateSvg);
+    $('.print').click(function() { window.print() });
 });
 
 const undos = [];
@@ -162,6 +165,7 @@ function saveSvg() {
     var filename = $object.attr('data').match(/[^\/]+$/)[0];
 
     localStorage[filename] = $('svg', $object[0].contentDocument).html();
+
 }
 
 
@@ -252,3 +256,22 @@ function int_to_hex(num)
     return hex;
 }
 
+function generateSvg() {
+    var $object = $('.svg-container object:first');
+    var filename = $object.attr('data').match(/[^\/]+$/)[0];
+    download(filename, $('svg', $object[0].contentDocument)[0].outerHTML);
+}
+
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}

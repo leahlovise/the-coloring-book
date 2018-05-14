@@ -40,3 +40,5 @@ jspm_packages
 
 .idea
 vcs.xml
+*.local
+credentials.csv

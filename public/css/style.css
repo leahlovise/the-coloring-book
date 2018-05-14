@@ -163,11 +163,16 @@ input[type=button]:hover {
     transition: all 0.7s;
     border-radius: 0.5em;
     box-shadow: 2px 5px 5px rgba(0,0,0,0.2);
+    position: relative;
 }
-.thumbnail-container:hover .thumbnail {
-    background-color: #f9f9f9;
-    box-shadow: 4px 10px 5px rgba(0,0,0,0.2);
-    transform: scale(1.1) rotateX(360deg);
+.thumbnail:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:100%;
+    width: 100%;
+    z-index: 1;
 }
 
 .thumbnail object.paint {
@@ -362,6 +367,11 @@ input:checked + .slider:before {
     h3 {
         color: #fff;
     }
+    .thumbnail-container:hover .thumbnail {
+        background-color: #f9f9f9;
+        box-shadow: 4px 10px 5px rgba(0,0,0,0.2);
+        transform: scale(1.1) rotateX(360deg);
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -460,9 +470,27 @@ html, body {
 .clear-drawing {
     height: 2em;
     bottom: 1em;
+    left: 9em;
+    border-radius: 0.5em;
+    position: absolute;
+}
+.save {
+    height: 2em;
+    bottom: 1em;
     left: 1em;
     border-radius: 0.5em;
     position: absolute;
+    background: #2196F3;
+    color: #fff;
+}
+.print {
+    height: 2em;
+    bottom: 1em;
+    left: 5em;
+    border-radius: 0.5em;
+    position: absolute;
+    background: #2196F3;
+    color: #fff;
 }
 
 .prev, .next {
@@ -567,3 +595,12 @@ html, body {
     }
 }
 
+.navbar-default .navbar-toggle {
+    height: 120px;
+}
+
+@media print {
+    a.prev, a.next, a, button, label.switch.blend-mode, .crayon-mask {
+        display: none;
+    }
+}
