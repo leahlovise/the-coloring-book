@@ -353,6 +353,21 @@ input:checked + .slider:before {
     .sidemenu {
 
     }
+    .slider {
+
+    }
+    .save {
+        left: 1em;
+    }
+    .print {
+        left: 5em;
+    }
+    .clear-drawing {
+        left: 9em;
+    }
+    .blend-mode {
+        width: 10em;
+    }
     .palette,
     .btn-group {
         margin-top: 20%;
@@ -453,7 +468,7 @@ html, body {
     position: absolute;
     bottom: 2em;
     left: 0;
-    width: 10em;
+    width: 11em;
     padding-left: 1em;
     background: rgba(255,255,255,0.6);
 }
@@ -470,7 +485,7 @@ html, body {
 .clear-drawing {
     height: 2em;
     bottom: 1em;
-    left: 9em;
+    left: 11em;
     border-radius: 0.5em;
     position: absolute;
 }
@@ -486,7 +501,7 @@ html, body {
 .print {
     height: 2em;
     bottom: 1em;
-    left: 5em;
+    left: 6em;
     border-radius: 0.5em;
     position: absolute;
     background: #2196F3;
